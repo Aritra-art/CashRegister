@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cash Register</title>
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -13,26 +14,37 @@
     <p class="description">Enter the bill amount and cash given by the customer and know minimum number of notes to return.</p>
 
     <label for="bill-amount">Bill Amount</label>
-    <input type="number" id="bill-amount">
-    <!-- <button class="next-button">Next</button> -->
+    <input placeholder="enter bill amount" type="number" id="bill-amount">
+    <button class="next-button"><span 
+      style="margin: auto; padding: 0.5rem;color: #991b1b; "
+      ><strong>Next</strong></span></button>
 
-    <p class="error"></p>
+    <p class="error-bill"></p>
     
-    <label for="cash-given">Cash Given</label>
-    <input type="number" id="cash-given">
-    <button class="check-button">Check</button>
+    <div class="show">
+    <label for="cash-given"><span
+      style="color: #991b1b;font-size: 1.3rem;"
+      >Cash Given</span></label>
+    <input placeholder="enter cash given" type="number" id="cash-given">
+    <button  class="check-button"><span
+      style="margin: auto; padding: 0.5rem;color: #991b1b;"
+      ><strong >Check</strong></span></button>
+
+    <p class="error-cash"></p>
+    <div class="show-table">
+
     <table class="change-table">
-      <caption>Return Change</caption>
+      <caption class="table-caption">Return Change</caption>
       <tr>
         <th>No. of Notes</th>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td class="notes"></td>
+        <td class="notes"></td>
+        <td class="notes"></td>
+        <td class="notes"></td>
+        <td class="notes"></td>
+        <td class="notes"></td>
+        <td class="notes"></td>
+        <td class="notes"></td>
       </tr>
       <tr>
         <th>Note</th>
@@ -47,44 +59,74 @@
       </tr>
     </table>
   </div>
+</div>
+  </div>
 </body>
 <script >
 
 var billAmount = document.querySelector("#bill-amount");
 var cashGiven = document.querySelector("#cash-given");
-var checkButton = document.querySelector(".check-button")
-var error = document.querySelector(".error")
+var checkButton = document.querySelector(".check-button");
+var nextButton = document.querySelector(".next-button")
+var errorCash = document.querySelector(".error-cash");
+var showTable = document.querySelector(".show-table");
+var show = document.querySelector(".show");
+var errorBill = document.querySelector(".error-bill");
+var notes = document.querySelectorAll(".notes");
+
+var  denominations = [2000, 500, 100, 50, 20, 10, 5, 1];
 
 checkButton.addEventListener("click", checkButtonHandler);
+nextButton.addEventListener("click", nextEventHandler);
+show.style.display = "none";
+showTable.style.display = "none"
 
-function checkButtonHandler(){
-  hideMessage();
-  if(billAmount.value>0){
-    if(cashGiven.value >= billAmount.value){
-      var remainingCash = cashGiven.value - billAmount.value;
-      console.log(remainingCash)
-      calculateCash(remainingCash);
-
-    }else{
-      errorHandler("Cash given should be atleast equal to the bill amount")
-    }
-
-  }else{
-    errorHandler("Bill Amount Should be greater than 0");
+function nextEventHandler(){
+  errorBill.style.display = "none"
+  
+  if(billAmount.value <=0){
+    show.style.display = "none";
+    console.log("bill less than 0");
+    errorBill.style.display = "block";
+    errorBill.innerText = "Bill Amount Should be greater than 0"
+  }
+  else {
+    show.style.display = "block";
+    errorBill.style.display = "none";
   }
 }
 
-function errorHandler(message){
-  error.style.display = "block";
-  error.innerText = message;
+function checkButtonHandler(){
+  showTable.style.display = "none"
+  errorCash.style.display = "none";
+  console.log("clicked");
+  if(Number(billAmount.value) >0 && Number(cashGiven.value > 0)){
+    if(Number(cashGiven.value) >= Number(billAmount.value)){
+      var remainingCash = Number(cashGiven.value) - Number(billAmount.value);
+      calculateCash (remainingCash);
+      showTable.style.display = "block"
+      errorCash.style.display = "none";
+
+    }else{
+      showTable.style.display = "none"
+      errorCash.style.display = "block";
+      errorCash.innerText = "Cash given should be atleast equal to the bill amount";
+    }
+
+  }else{
+    showTable.style.display = "none"
+    errorCash.style.display = "block";
+    errorCash.innerText = "Invalid Cash given";
+  }
 }
 
-function hideMessage(){
-  error.style.display = "none";
-}
-
+  
 function calculateCash(remainingCash){
-
+  for(var i=0;i<denominations.length;i++){
+    var number = Math.trunc(remainingCash/denominations[i]);
+    remainingCash = remainingCash % denominations[i];
+    notes[i].innerText = number;
+  }
 }
 </script>
 </html>
