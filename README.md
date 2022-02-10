@@ -21,7 +21,7 @@ Enjoy !!
 
 [Website Link](https://denominations.netlify.app/)
 
-#TechStack used:
+**TechStack used:**
 
 *1. HTML5*
 
