@@ -40,6 +40,11 @@ function checkButtonHandler(){
       calculateCash (remainingCash);
       showTable.style.display = "block"
       errorCash.style.display = "none";
+      if(remainingCash <1){
+        showTable.style.display = "none"
+        errorCash.style.display = "block";
+        errorCash.innerText = "No Cash to be returned";
+      }
 
     }else{
       showTable.style.display = "none"
