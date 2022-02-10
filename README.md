@@ -13,6 +13,7 @@
 >A web app which would give the Denominations of the returned amount of a bill in several currencies.
 >
 
+
 **Coding**
 
 The webapp is deployed and is live now
@@ -20,7 +21,7 @@ Enjoy !!
 
 [Website Link](https://denominations.netlify.app/)
 
-##TechStack used:
+#TechStack used:
 
 *1. HTML5*
 
