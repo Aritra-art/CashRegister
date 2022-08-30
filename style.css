@@ -55,6 +55,7 @@ body {
 
 .check-button {
   border: 2px solid var(--secondary-color);
+  margin-bottom: 1rem;
   border-radius: 0.5rem;
   background-color: white;
   margin-right: 1rem;
@@ -67,6 +68,7 @@ body {
 }
 
 .clear-button {
+  margin-bottom: 1rem;
   margin-left: 1rem;
   border: 2px solid var(--secondary-color);
   border-radius: 0.5rem;
