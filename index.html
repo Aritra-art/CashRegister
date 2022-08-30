@@ -1,67 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cash Register</title>
   <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
-  
+
   <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
   <div class="container">
     <h1 class="heading">Cash Register Manager</h1>
-    <p class="description">Enter the bill amount and cash given by the customer and know minimum number of notes to return.</p>
+    <p class="description">Enter the bill amount and cash given by the customer and know minimum number of notes to
+      return.</p>
 
     <label for="bill-amount">Bill Amount</label>
     <input placeholder="enter bill amount" type="number" id="bill-amount">
-    <button class="next-button"><span 
-      style="margin: auto; padding: 0.5rem;color: #991b1b; "
-      ><strong>Next</strong></span></button>
+    <button class="next-button"><span style="color: #991b1b; font-size: 1.2rem; "><strong>Next</strong></span></button>
 
     <p class="error-bill"></p>
-    
+
     <div class="show">
-    <label for="cash-given"><span
-      style="color: #991b1b;font-size: 1.3rem;"
-      >Cash Given</span></label>
-    <input placeholder="enter cash given" type="number" id="cash-given">
-    <button  class="check-button"><span
-      style="margin: auto; padding: 0.5rem;color: #991b1b;"
-      ><strong >Check</strong></span></button>
+      <label for="cash-given"><span style="color: #991b1b;font-size: 1.3rem;">Cash Given</span></label>
+      <input placeholder="enter cash given" type="number" id="cash-given">
+      <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+        <button class="check-button"><span style="color: #991b1b;"><strong>Check</strong></span></button>
+        <button class="clear-button"><span style="color: #991b1b;"><strong>Clear</strong></span></button>
+      </div>
 
-    <p class="error-cash"></p>
-    <div class="show-table">
 
-    <table class="change-table">
-      <caption class="table-caption">Return Change</caption>
-      <tr>
-        <th>No. of Notes</th>
-        <td class="notes"></td>
-        <td class="notes"></td>
-        <td class="notes"></td>
-        <td class="notes"></td>
-        <td class="notes"></td>
-        <td class="notes"></td>
-        <td class="notes"></td>
-        <td class="notes"></td>
-      </tr>
-      <tr>
-        <th>Note</th>
-        <td>2000</td>
-        <td>500</td>
-        <td>100</td>
-        <td>50</td>
-        <td>20</td>
-        <td>10</td>
-        <td>5</td>
-        <td>1</td>
-      </tr>
-    </table>
-  </div>
-</div>
+      <p class="error-cash"></p>
+      <div class="show-table">
+
+        <table class="change-table">
+          <caption class="table-caption">Return Change</caption>
+          <tr>
+            <th>No. of Notes</th>
+            <td class="notes"></td>
+            <td class="notes"></td>
+            <td class="notes"></td>
+            <td class="notes"></td>
+            <td class="notes"></td>
+            <td class="notes"></td>
+            <td class="notes"></td>
+            <td class="notes"></td>
+          </tr>
+          <tr>
+            <th>Note</th>
+            <td>2000</td>
+            <td>500</td>
+            <td>100</td>
+            <td>50</td>
+            <td>20</td>
+            <td>10</td>
+            <td>5</td>
+            <td>1</td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </body>
 <script src="./index.js"></script>
+
 </html>
